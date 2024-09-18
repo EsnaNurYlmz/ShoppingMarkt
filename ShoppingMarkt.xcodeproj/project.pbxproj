@@ -18,6 +18,10 @@
 		C61DF81B2C9B582400722A76 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */; };
 		C61DF81D2C9B5AB300722A76 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81C2C9B5AB300722A76 /* Products.swift */; };
 		C61DF81F2C9B5BBD00722A76 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */; };
+		C61DF8212C9B668F00722A76 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8202C9B668F00722A76 /* ProductDetailViewController.swift */; };
+		C61DF8232C9B66A600722A76 /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8222C9B66A600722A76 /* ProductDetailCollectionViewCell.swift */; };
+		C61DF8252C9B66BE00722A76 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8242C9B66BE00722A76 /* ProductDetail.swift */; };
+		C61DF8272C9B66D300722A76 /* ProductDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8262C9B66D300722A76 /* ProductDetailResponse.swift */; };
 		C66247CE2C90655B00377B6C /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247CD2C90655B00377B6C /* AdvertCollectionViewCell.swift */; };
 		C66247D02C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247CF2C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift */; };
 		C66247D22C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247D12C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift */; };
@@ -46,6 +50,10 @@
 		C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C61DF81C2C9B5AB300722A76 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
+		C61DF8202C9B668F00722A76 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		C61DF8222C9B66A600722A76 /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		C61DF8242C9B66BE00722A76 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
+		C61DF8262C9B66D300722A76 /* ProductDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailResponse.swift; sourceTree = "<group>"; };
 		C66247CD2C90655B00377B6C /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		C66247CF2C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		C66247D12C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionalProductsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 				C61DF8082C99C2EA00722A76 /* CategoryTableViewCell.swift */,
 				C61DF80E2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift */,
 				C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */,
+				C61DF8222C9B66A600722A76 /* ProductDetailCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 				C6C9C2F82C98C2CD00CCEC12 /* CategoriesViewController.swift */,
 				C61DF80C2C9B055800722A76 /* CategoryDetailViewController.swift */,
 				C61DF8182C9B12AC00722A76 /* ProductsViewController.swift */,
+				C61DF8202C9B668F00722A76 /* ProductDetailViewController.swift */,
 				C6C9C2FA2C98C2F800CCEC12 /* FavoriteViewController.swift */,
 				C6C9C2FC2C98C30F00CCEC12 /* CartViewController.swift */,
 				C6C9C2FE2C98C32E00CCEC12 /* AccountViewController.swift */,
@@ -111,6 +121,8 @@
 				C61DF8162C9B0F3500722A76 /* CategoryDetailResponse.swift */,
 				C61DF81C2C9B5AB300722A76 /* Products.swift */,
 				C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */,
+				C61DF8242C9B66BE00722A76 /* ProductDetail.swift */,
+				C61DF8262C9B66D300722A76 /* ProductDetailResponse.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -225,15 +237,19 @@
 				C61DF81D2C9B5AB300722A76 /* Products.swift in Sources */,
 				C61DF8192C9B12AC00722A76 /* ProductsViewController.swift in Sources */,
 				C61DF8172C9B0F3500722A76 /* CategoryDetailResponse.swift in Sources */,
+				C61DF8252C9B66BE00722A76 /* ProductDetail.swift in Sources */,
 				C66247D02C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift in Sources */,
 				C6CB88A52C8F95770086CBFB /* ShoppingMarkt.xcdatamodeld in Sources */,
+				C61DF8272C9B66D300722A76 /* ProductDetailResponse.swift in Sources */,
 				C6C9C2FB2C98C2F800CCEC12 /* FavoriteViewController.swift in Sources */,
 				C6CB889B2C8F95770086CBFB /* AppDelegate.swift in Sources */,
 				C66247D22C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift in Sources */,
+				C61DF8232C9B66A600722A76 /* ProductDetailCollectionViewCell.swift in Sources */,
 				C6C9C2F92C98C2CD00CCEC12 /* CategoriesViewController.swift in Sources */,
 				C61DF80B2C99C48D00722A76 /* Category.swift in Sources */,
 				C61DF8152C9B0DA800722A76 /* CategoryDetail.swift in Sources */,
 				C6CB889D2C8F95770086CBFB /* SceneDelegate.swift in Sources */,
+				C61DF8212C9B668F00722A76 /* ProductDetailViewController.swift in Sources */,
 				C61DF80F2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift in Sources */,
 				C6C9C2FF2C98C32E00CCEC12 /* AccountViewController.swift in Sources */,
 				C61DF81B2C9B582400722A76 /* ProductsCollectionViewCell.swift in Sources */,
