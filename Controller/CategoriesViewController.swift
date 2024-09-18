@@ -9,7 +9,6 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
 
-    
     @IBOutlet weak var categoryTableView: UITableView!
     var categoryList = [Category]()
     
@@ -28,14 +27,24 @@ extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource
         return categoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoryList[indexPath.row]
+        let category = categoryList[indexPath.row]
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+        cell.categoryName.text = category.categoryName
         
+        if let url = URL(string: " /\(category.categoryImage!)"){
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url)
+                
+                DispatchQueue.main.async {
+                    cell.categoryImage.image = UIImage(data: data!)
+                }
+            }
+        }
+        
+        cell.categoryImage.image = UIImage(named: category.categoryImage!)
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+       performSegue(withIdentifier: "toCategoryDetail", sender: nil)
     }
-    
-    
-    
-    
 }

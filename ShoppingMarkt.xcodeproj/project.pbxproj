@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		C61DF8092C99C2EA00722A76 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8082C99C2EA00722A76 /* CategoryTableViewCell.swift */; };
 		C61DF80B2C99C48D00722A76 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF80A2C99C48D00722A76 /* Category.swift */; };
+		C61DF80D2C9B055800722A76 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF80C2C9B055800722A76 /* CategoryDetailViewController.swift */; };
+		C61DF80F2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF80E2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift */; };
+		C61DF8132C9B0C6700722A76 /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8122C9B0C6700722A76 /* CategoryResponse.swift */; };
+		C61DF8152C9B0DA800722A76 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8142C9B0DA800722A76 /* CategoryDetail.swift */; };
+		C61DF8172C9B0F3500722A76 /* CategoryDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8162C9B0F3500722A76 /* CategoryDetailResponse.swift */; };
+		C61DF8192C9B12AC00722A76 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF8182C9B12AC00722A76 /* ProductsViewController.swift */; };
+		C61DF81B2C9B582400722A76 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */; };
+		C61DF81D2C9B5AB300722A76 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81C2C9B5AB300722A76 /* Products.swift */; };
+		C61DF81F2C9B5BBD00722A76 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */; };
 		C66247CE2C90655B00377B6C /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247CD2C90655B00377B6C /* AdvertCollectionViewCell.swift */; };
 		C66247D02C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247CF2C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift */; };
 		C66247D22C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66247D12C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift */; };
@@ -28,6 +37,15 @@
 /* Begin PBXFileReference section */
 		C61DF8082C99C2EA00722A76 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C61DF80A2C99C48D00722A76 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C61DF80C2C9B055800722A76 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		C61DF80E2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		C61DF8122C9B0C6700722A76 /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResponse.swift; sourceTree = "<group>"; };
+		C61DF8142C9B0DA800722A76 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		C61DF8162C9B0F3500722A76 /* CategoryDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailResponse.swift; sourceTree = "<group>"; };
+		C61DF8182C9B12AC00722A76 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C61DF81C2C9B5AB300722A76 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		C66247CD2C90655B00377B6C /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		C66247CF2C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		C66247D12C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionalProductsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -64,6 +82,8 @@
 				C66247CF2C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift */,
 				C66247D12C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift */,
 				C61DF8082C99C2EA00722A76 /* CategoryTableViewCell.swift */,
+				C61DF80E2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift */,
+				C61DF81A2C9B582400722A76 /* ProductsCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -73,6 +93,8 @@
 			children = (
 				C6CB889E2C8F95770086CBFB /* ViewController.swift */,
 				C6C9C2F82C98C2CD00CCEC12 /* CategoriesViewController.swift */,
+				C61DF80C2C9B055800722A76 /* CategoryDetailViewController.swift */,
+				C61DF8182C9B12AC00722A76 /* ProductsViewController.swift */,
 				C6C9C2FA2C98C2F800CCEC12 /* FavoriteViewController.swift */,
 				C6C9C2FC2C98C30F00CCEC12 /* CartViewController.swift */,
 				C6C9C2FE2C98C32E00CCEC12 /* AccountViewController.swift */,
@@ -84,6 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				C61DF80A2C99C48D00722A76 /* Category.swift */,
+				C61DF8122C9B0C6700722A76 /* CategoryResponse.swift */,
+				C61DF8142C9B0DA800722A76 /* CategoryDetail.swift */,
+				C61DF8162C9B0F3500722A76 /* CategoryDetailResponse.swift */,
+				C61DF81C2C9B5AB300722A76 /* Products.swift */,
+				C61DF81E2C9B5BBD00722A76 /* ProductsResponse.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -195,6 +222,9 @@
 				C66247CE2C90655B00377B6C /* AdvertCollectionViewCell.swift in Sources */,
 				C6CB889F2C8F95770086CBFB /* ViewController.swift in Sources */,
 				C6C9C2FD2C98C30F00CCEC12 /* CartViewController.swift in Sources */,
+				C61DF81D2C9B5AB300722A76 /* Products.swift in Sources */,
+				C61DF8192C9B12AC00722A76 /* ProductsViewController.swift in Sources */,
+				C61DF8172C9B0F3500722A76 /* CategoryDetailResponse.swift in Sources */,
 				C66247D02C906A0B00377B6C /* CategoryAdvertCollectionViewCell.swift in Sources */,
 				C6CB88A52C8F95770086CBFB /* ShoppingMarkt.xcdatamodeld in Sources */,
 				C6C9C2FB2C98C2F800CCEC12 /* FavoriteViewController.swift in Sources */,
@@ -202,9 +232,15 @@
 				C66247D22C906E0200377B6C /* PromotionalProductsCollectionViewCell.swift in Sources */,
 				C6C9C2F92C98C2CD00CCEC12 /* CategoriesViewController.swift in Sources */,
 				C61DF80B2C99C48D00722A76 /* Category.swift in Sources */,
+				C61DF8152C9B0DA800722A76 /* CategoryDetail.swift in Sources */,
 				C6CB889D2C8F95770086CBFB /* SceneDelegate.swift in Sources */,
+				C61DF80F2C9B060800722A76 /* CategoryDetailCollectionViewCell.swift in Sources */,
 				C6C9C2FF2C98C32E00CCEC12 /* AccountViewController.swift in Sources */,
+				C61DF81B2C9B582400722A76 /* ProductsCollectionViewCell.swift in Sources */,
+				C61DF81F2C9B5BBD00722A76 /* ProductsResponse.swift in Sources */,
 				C61DF8092C99C2EA00722A76 /* CategoryTableViewCell.swift in Sources */,
+				C61DF8132C9B0C6700722A76 /* CategoryResponse.swift in Sources */,
+				C61DF80D2C9B055800722A76 /* CategoryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
