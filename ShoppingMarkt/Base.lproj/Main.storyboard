@@ -286,6 +286,22 @@
             </objects>
             <point key="canvasLocation" x="3401" y="-50"/>
         </scene>
+        <!--Product View Controller-->
+        <scene sceneID="1S5-89-rZu">
+            <objects>
+                <viewController id="Dkf-TB-v6F" customClass="ProductViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U5N-wZ-ms8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hPX-Vi-zeJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HDv-Dm-DfW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xdt-3I-sdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1134" y="637"/>
+        </scene>
         <!--Product Detail View Controller-->
         <scene sceneID="ysf-N8-w9Q">
             <objects>
@@ -389,6 +405,7 @@
                     <navigationItem key="navigationItem" id="G6F-ia-Cat"/>
                     <connections>
                         <outlet property="ProductDetailCollectionView" destination="KoA-H6-lLv" id="UwD-iM-rkK"/>
+                        <segue destination="Dkf-TB-v6F" kind="show" identifier="toProduct" id="DLi-Cx-ixW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcG-Yo-LoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -478,7 +495,7 @@
                     <navigationItem key="navigationItem" id="9n0-qx-xfQ"/>
                     <connections>
                         <outlet property="ProductsCollectionView" destination="laZ-PF-g7g" id="E02-fr-izR"/>
-                        <segue destination="dSf-uD-SNe" kind="show" identifier="ToProductDetail" id="nkD-YD-qzj"/>
+                        <segue destination="dSf-uD-SNe" kind="show" identifier="toProductDetail" id="nkD-YD-qzj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8j8-yD-41c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
