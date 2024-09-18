@@ -28,7 +28,8 @@ extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource
         return categoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = categoryList[indexPath.row]
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         <#code#>
