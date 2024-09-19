@@ -1,5 +1,5 @@
 //
-//  ProductViewController.swift
+//  ClothesProductViewController.swift
 //  ShoppingMarkt
 //
 //  Created by Esna nur Yılmaz on 20.09.2024.
@@ -7,15 +7,14 @@
 
 import UIKit
 
-class ProductViewController: UIViewController {
+class ClothesProductViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
     
 
-   
 
 }
