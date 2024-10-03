@@ -7,6 +7,13 @@
 
 import UIKit
 
-class FavoriteCollectionViewCell: UICollectionViewCell {
+class FavoriteCollectionViewCell:
+    UICollectionViewCell {
+    
+    @IBOutlet weak var favoriteImage: UIImageView!
+    
+    @IBOutlet weak var favoriteProductName: UILabel!
+    
+    @IBOutlet weak var favoriteProductPrice: UILabel!
     
 }

@@ -9,4 +9,11 @@ import UIKit
 
 class CartCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cartImage: UIImageView!
+    
+    @IBOutlet weak var cartProductName: UILabel!
+    
+    @IBOutlet weak var cartProductPrice: UILabel!
+    
+    
 }
