@@ -10,16 +10,49 @@ import UIKit
 class ProductDetailViewController: UIViewController {
     @IBOutlet weak var ProductDetailCollectionView: UICollectionView!
     var productDetailList = [ProductDetail]()
-    
+    var categoryProduct : Products?
+    var selectedCategoryId : Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ProductDetailCollectionView.dataSource = self
         ProductDetailCollectionView.delegate = self
         
+        if let category_id = selectedCategoryId {
+            fetchProductDetail(productId: category_id)
+        }
     }
-    
-
+    func fetchProductDetail(productId:Int){
+        var request = URLRequest(url: URL(string: "")!)
+        request.httpMethod = "POST"
+        let postString = "category_id=\(productId)"
+        request.httpBody = postString.data(using: .utf8)
+        
+        URLSession.shared.dataTask(with: request) { data , response , error in
+            if error != nil || data == nil {
+                print("Error")
+                return
+            }
+            do{
+                let ResponseProductDetail = try JSONDecoder().decode(ProductDetailResponse.self, from: data!)
+                if let getProductDetailList = ResponseProductDetail.productDetail {
+                    self.productDetailList = getProductDetailList
+                }
+                
+                DispatchQueue.main.async {
+                    self.ProductDetailCollectionView.reloadData()
+                }
+            }catch{
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indeks = sender as? Int
+        let VC = segue.destination as! ProductViewController
+        VC.categoryProductDetail = productDetailList[indeks!]
+    }
     
 
 }

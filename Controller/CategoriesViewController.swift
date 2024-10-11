@@ -17,8 +17,35 @@ class CategoriesViewController: UIViewController {
         
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
+        
+        fetchCategories()
+    }
+    
+    func fetchCategories() {
+        let url = URL(string: " ")!
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil || data == nil {
+                print("Error")
+                return
+            }
+            do {
+                let ResponseCategory = try JSONDecoder().decode(CategoryResponse.self, from: data!)
+                if let getCategoryList = ResponseCategory.category {
+                    self.categoryList = getCategoryList
+                }
+            } catch {
+                print("Decoding error: \(error.localizedDescription)")
+            }
+        }.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indeks = sender as? Int
+        let VC = segue.destination as! CategoryDetailViewController
+        VC.category = categoryList[indeks!]
     }
 }
+
 extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -40,10 +67,10 @@ extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource
                 }
             }
         }
-        
         cell.categoryImage.image = UIImage(named: category.categoryImage!)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        performSegue(withIdentifier: "toCategoryDetail", sender: nil)
     }

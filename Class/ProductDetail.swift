@@ -13,15 +13,18 @@ class ProductDetail : Codable {
     var productDetailName : String?
     var productDetailImage : String?
     var productDetailPrice : String?
+    var productDetailFeatures : String?
     
     init(){
     }
     
-    init(productDetailId: String, productDetailName: String, productDetailImage: String, productDetailPrice: String) {
+    init(productDetailId: String, productDetailName: String, productDetailImage: String, productDetailPrice: String, productDetailFeatures: String) {
         self.productDetailId = productDetailId
         self.productDetailName = productDetailName
         self.productDetailImage = productDetailImage
         self.productDetailPrice = productDetailPrice
+        self.productDetailFeatures = productDetailFeatures
+
     }
     
 }

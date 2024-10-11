@@ -21,8 +21,4 @@ class Category :Codable{
         self.categoryId = categoryId
         self.categoryImage = categoryImage
     }
-    
-    
-    
-    
 }
