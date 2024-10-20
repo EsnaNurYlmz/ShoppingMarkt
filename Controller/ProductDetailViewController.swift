@@ -69,7 +69,7 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
         let productDetail = productDetailList[indexPath.row]
         let cell = ProductDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "productDetailCell", for: indexPath) as! ProductDetailCollectionViewCell
         cell.productDetailName.text = productDetail.productDetailName
-        cell.productDetailPrice.text = productDetail.productDetailPrice
+        cell.productDetailPrice.text = String(format: "%.2f ₺", productDetail.productDetailPrice!) 
         if let url = URL(string: " /\(productDetail.productDetailImage!)"){
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url)

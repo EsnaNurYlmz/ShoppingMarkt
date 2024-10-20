@@ -51,7 +51,7 @@ extension FavoriteViewController : UICollectionViewDelegate , UICollectionViewDa
         let favoriteProducts = favoriteList[indexPath.row]
         let cell = favoriteCollectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoriteCollectionViewCell
         cell.favoriteProductName.text = favoriteProducts.productDetailName
-        cell.favoriteProductPrice.text = favoriteProducts.productDetailPrice
+        cell.favoriteProductPrice.text = String(format: "%.2f ₺", favoriteProducts.productDetailPrice!)
         if let url = URL(string: " /\(favoriteProducts.productDetailImage!)"){
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url)

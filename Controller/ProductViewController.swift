@@ -40,7 +40,7 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
                 }
             }
             productNameLabel.text = product.productDetailName
-            productPriceLabel.text = product.productDetailPrice
+            productPriceLabel.text =  String(format: "%.2f ₺", product.productDetailPrice!)  
             productFeaturesLabel.text = product.productDetailFeatures
         }
     }

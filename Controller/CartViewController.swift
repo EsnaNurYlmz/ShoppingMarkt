@@ -50,7 +50,7 @@ extension CartViewController : UICollectionViewDelegate , UICollectionViewDataSo
         let cell = cartCollectionView.dequeueReusableCell(withReuseIdentifier: "CartCell", for: indexPath) as! CartCollectionViewCell
         cell.cartProductName.text = CartList.productDetailName
         cell.cartProductPrice.text = String(format: "%.2f ₺", CartList.productDetailPrice!)
-        cell.productPrice = CartList.productDetailPrice! 
+        cell.productPrice = CartList.productDetailPrice!
           cell.quantityStepper.value = 1
           cell.quantityStepper.minimumValue = 1
         if let url = URL(string: " /\(CartList.productDetailImage!)"){

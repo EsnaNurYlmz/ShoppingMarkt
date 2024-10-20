@@ -37,20 +37,30 @@ class SignUpViewController: UIViewController {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext
             
-            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)!
-            let newUser = NSManagedObject(entity: entity, insertInto: context)
-
-            newUser.setValue(name, forKey: "name")
-            newUser.setValue(email, forKey: "email")
-            newUser.setValue(password, forKey: "password")
-
-            do {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            fetchRequest.predicate = NSPredicate(format: "name == %@ OR email == %@", name, email)
+        
+        do {
+                let results = try context.fetch(fetchRequest)
+                if results.count > 0 {
+                    showAlert(title: "Hata", message: "Bu isimde veya e-postada bir kullanıcı zaten var")
+                    return
+                }
+                let entity = NSEntityDescription.entity(forEntityName: "User", in: context)!
+                let newUser = NSManagedObject(entity: entity, insertInto: context)
+                
+                newUser.setValue(name, forKey: "name")
+                newUser.setValue(email, forKey: "email")
+                newUser.setValue(password, forKey: "password")
+                
                 try context.save()
                 showAlert(title: "Başarılı", message: "Kullanıcı başarıyla kaydedildi")
+                
             } catch {
-                showAlert(title: "Hata", message: "Kullanıcı kaydedilemedi: \(error)")
+                showAlert(title: "Hata", message: "Kullanıcı kaydedilemedi: \(error.localizedDescription)")
             }
         }
+    
     func showAlert(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
