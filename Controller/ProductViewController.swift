@@ -19,7 +19,7 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
     var categoryProductDetail : ProductDetail?
     let sizes = ["S", "M", "L", "XL"]
     var selectedSize: String?
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hidesBottomBarWhenPushed = false
@@ -87,13 +87,43 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
         }
     
     @IBAction func addToFavoritesTapped(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "tofavorite", sender: nil)
-        print("product added to favorite")
+        if let productFavorite = categoryProductDetail {
+            var favoriteProducts = getFavoriteProducts()
+            favoriteProducts.append(productFavorite)
+            
+            if let encodedData = try? JSONEncoder().encode(favoriteProducts) {
+                           UserDefaults.standard.set(encodedData, forKey: "favorites")
+                           print("Ürün favorilere eklendi")
+                       }
+        }
+            performSegue(withIdentifier: "tofavorite", sender: nil)
     }
+    func getFavoriteProducts() -> [ProductDetail] {
+            if let savedData = UserDefaults.standard.data(forKey: "favorites"),
+               let favoriteProducts = try? JSONDecoder().decode([ProductDetail].self, from: savedData) {
+                return favoriteProducts
+            }
+            return []
+        }
     
     @IBAction func addToCartTapped(_ sender: UIBarButtonItem) {
-        print("product added to cart")
-        performSegue(withIdentifier: "toCart", sender: nil)
+        if let productCart = categoryProductDetail {
+            var cartProducts = getCartProducts()
+            cartProducts.append(productCart)
+            
+            if let encodedData = try? JSONEncoder().encode(cartProducts){
+                UserDefaults.standard.set(encodedData, forKey: "cart")
+                print("ürün sepete eklendi")
+            }
+        }
+        performSegue(withIdentifier: "toCart", sender: nil) // Sepet sayfasına geçiş
     }
-    
+            
+    func getCartProducts() -> [ProductDetail] {
+        if let  saveData = UserDefaults.standard.data(forKey: "cart"),
+           let cartProducts = try? JSONDecoder().decode([ProductDetail].self, from: saveData) {
+            return cartProducts
+        }
+        return []
+    }
 }

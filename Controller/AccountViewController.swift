@@ -6,76 +6,56 @@
 //
 
 import UIKit
-import CoreData
 
 class AccountViewController: UIViewController {
-
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var accountTableView: UITableView!
+    let accountCategory = ["GİRİŞ","ÜYELİK","FAVORİLER","SEPET","ÇIKIŞ"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    @IBAction func loginButtonTapped(_ sender: UIButton) {
-        guard let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !email.isEmpty
-        else{
-            print("Lütfen Tüm Alanları Doldurun!")
-            return
-        }
-        if checkUserCredentials(email:email , password:password){
-            print("Giriş Başarılı")
-            showAlert(title: "Başarılı", message: "Giriş yapıldı!")
-            
-        }
-        else{
-            print("Geçersiz E-Posta veya Şifre")
-            showAlert(title: "Hata", message: "Geçersiz E-Posta veya Şifre")
-        }
-    }
-    
-    func checkUserCredentials(email:String, password:String) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        else{
-            return false
-        }
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "User")
-                fetchRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
-        do {
-                   let users = try context.fetch(fetchRequest)
-                   if users.count > 0 {
-                       return true
-                   } else {
-                       return false
-                   }
-               } catch {
-                   print("Kullanıcı Bulunamadı: \(error)")
-                   return false
-               }
-           }
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        accountTableView.dataSource = self
+        accountTableView.delegate = self
 
-        let okAction = UIAlertAction(title: "Tamam", style: .default) { _ in
-            if title == "Başarılı" {
-                // Ana menüyü içeren TabBarController'a geçiş yapalım
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarControllerID") as? UITabBarController {
-                    tabBarVC.modalPresentationStyle = .fullScreen
-                    self.present(tabBarVC, animated: true, completion: nil)
-                }
-
-                // TextField'ları temizle
-                self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-            }
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
     }
-    @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "toSignUp" , sender: nil)
-    }
-    
 }
+extension AccountViewController : UITableViewDelegate , UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return accountCategory.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let  accountList = accountCategory[indexPath.row]
+        let cell = accountTableView.dequeueReusableCell(withIdentifier: "AccountCell") as! AccountTableViewCell
+        cell.accountLabel.text = accountList
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCategory = accountCategory[indexPath.row]
+        
+        switch selectedCategory {
+        case "GİRİŞ":
+            performSegue(withIdentifier: "toSignInVC", sender: self)
+            
+        case "ÜYELİK":
+            performSegue(withIdentifier: "toSignUpVC", sender: self)
+    
+        case "FAVORİLER" :
+            performSegue(withIdentifier: "toFavoriteVC", sender: self)
+
+        case "SEPET" :
+            performSegue(withIdentifier: "toCartVC", sender: self)
+            
+        case "ÇIKIŞ" :
+            print("ÇIKIŞ yapılıyor...")
+        default:
+            break
+        }
+    }
+}
+

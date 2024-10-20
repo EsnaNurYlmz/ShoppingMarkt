@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var advertCollectionView: UICollectionView!
     @IBOutlet weak var CategoryAdvertCollectionView: UICollectionView!
     @IBOutlet weak var PromotionalProductsCollectionView: UICollectionView!
@@ -17,9 +18,16 @@ class ViewController: UIViewController {
     let CategoryAdvertImage = ["cat1","cat2","cat9","cat7"]
     let PromotionaProductsImage = ["p2","p3","p4","p5","p6","p8","p7","p9","p1","p10"]
     var list:[String] = [String]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Kullanıcı adını UserDefaults'dan alalım ve yazdıralım
+           if let savedUserName = UserDefaults.standard.string(forKey: "userName") {
+               print("Kaydedilen kullanıcı adı: Hoşgeldin\(savedUserName)") // Veriyi doğru çekip çekmediğimizi kontrol edelim
+               userName.text = savedUserName
+           } else {
+               print("Kullanıcı adı bulunamadı.") // Eğer veri gelmiyorsa burayı kontrol edelim
+           }
         
         list = ["Giyim","Elektronik","Kozmetik","Mobilya"]
         
@@ -49,6 +57,7 @@ class ViewController: UIViewController {
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
         }
+        
     }
 }
 extension ViewController : UICollectionViewDelegate , UICollectionViewDataSource {
