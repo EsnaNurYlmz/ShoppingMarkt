@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var advertCollectionView: UICollectionView!
     @IBOutlet weak var CategoryAdvertCollectionView: UICollectionView!
     @IBOutlet weak var PromotionalProductsCollectionView: UICollectionView!
@@ -21,13 +20,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Kullanıcı adını UserDefaults'dan alalım ve yazdıralım
-           if let savedUserName = UserDefaults.standard.string(forKey: "userName") {
-               print("Kaydedilen kullanıcı adı: Hoşgeldin\(savedUserName)") // Veriyi doğru çekip çekmediğimizi kontrol edelim
-               userName.text = savedUserName
-           } else {
-               print("Kullanıcı adı bulunamadı.") // Eğer veri gelmiyorsa burayı kontrol edelim
-           }
         
         list = ["Giyim","Elektronik","Kozmetik","Mobilya"]
         

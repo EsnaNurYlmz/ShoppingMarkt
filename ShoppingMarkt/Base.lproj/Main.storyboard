@@ -158,13 +158,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KULLANICI ADI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMc-Vf-JN0">
-                                <rect key="frame" x="0.0" y="10" width="393" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -181,8 +174,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TcQ-Xm-6qP" secondAttribute="bottom" constant="245" id="XBk-G3-SOg"/>
                             <constraint firstItem="X8Z-QG-rAu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zt7-Re-WJH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ibf-GI-toC" secondAttribute="bottom" constant="16" id="a71-tB-1UZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FMc-Vf-JN0" secondAttribute="trailing" id="bpM-gr-zRe"/>
-                            <constraint firstItem="FMc-Vf-JN0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cdV-fE-H0L"/>
                             <constraint firstItem="ibf-GI-toC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fZz-gS-Sgb"/>
                             <constraint firstItem="S0k-Ld-n2A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="iMV-EX-617"/>
                             <constraint firstItem="S0k-Ld-n2A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jGM-pF-tO8"/>
@@ -192,7 +183,6 @@
                             <constraint firstItem="GOQ-rf-FaO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y4e-d2-xr0"/>
                             <constraint firstItem="ibf-GI-toC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yPJ-3Q-GMM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S0k-Ld-n2A" secondAttribute="trailing" constant="148" id="ydz-9M-1WN"/>
-                            <constraint firstItem="FMc-Vf-JN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="zoi-uF-Y4I"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Anasayfa" image="house.fill" catalog="system" id="DWC-Yp-9Og">
@@ -204,7 +194,6 @@
                         <outlet property="CategoryAdvertCollectionView" destination="TcQ-Xm-6qP" id="SxS-Ka-eKg"/>
                         <outlet property="PromotionalProductsCollectionView" destination="ibf-GI-toC" id="ISG-gf-SrW"/>
                         <outlet property="advertCollectionView" destination="X8Z-QG-rAu" id="0vQ-tw-eQa"/>
-                        <outlet property="userName" destination="FMc-Vf-JN0" id="vBl-VM-Q0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -930,25 +919,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXj-wo-5UD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5046.5648854961828" y="-50"/>
+            <point key="canvasLocation" x="5506" y="-67"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="I74-jH-LJ3">
             <objects>
                 <viewController id="Q1r-7t-B4i" customClass="AccountViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="whc-pV-S5x">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HESABIM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-Nl-bg3">
-                                <rect key="frame" x="0.0" y="64" width="393" height="24"/>
+                                <rect key="frame" x="0.0" y="5" width="393" height="156"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9oQ-ha-7ts">
-                                <rect key="frame" x="0.0" y="303" width="393" height="466"/>
+                                <rect key="frame" x="0.0" y="376" width="393" height="466"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -981,14 +970,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygZ-Fv-By7">
-                                <rect key="frame" x="0.0" y="106" width="393" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kullancı adı" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygZ-Fv-By7">
+                                <rect key="frame" x="0.0" y="179" width="393" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShoppingMarktLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HUd-xx-DH4">
-                                <rect key="frame" x="50" y="151" width="293" height="124"/>
+                                <rect key="frame" x="50" y="224" width="293" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="124" id="gjt-Io-hPD"/>
                                 </constraints>
@@ -1034,14 +1023,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAl-uy-jit" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5812.9770992366412" y="-56.338028169014088"/>
+            <point key="canvasLocation" x="6909" y="-115"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="ffS-7U-rmK">
             <objects>
                 <viewController storyboardIdentifier="SignInVC" id="3Km-mV-RGL" customClass="SignInViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fub-qJ-Dz0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShoppingMarktLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-Cj-ohT">
@@ -1118,11 +1107,12 @@
                         <outlet property="passwordTextField" destination="sGM-hT-Z4k" id="vaG-tY-aY1"/>
                         <segue destination="WqD-fw-Pwz" kind="show" identifier="toSignUp" id="zk5-S8-aZd"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToHome" id="I4q-8V-koV"/>
+                        <segue destination="Q1r-7t-B4i" kind="show" identifier="goToAccountVC" id="deQ-iI-WzU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMa-IH-LKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5813" y="655"/>
+            <point key="canvasLocation" x="5437" y="1054"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="PdM-Tj-6BM">
@@ -1207,7 +1197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqi-CE-PkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6651" y="655"/>
+            <point key="canvasLocation" x="7091" y="995"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="S6h-28-p7M">
@@ -1233,6 +1223,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="E6b-sq-qEh"/>
+        <segue reference="deQ-iI-WzU"/>
         <segue reference="Cbk-3y-EnF"/>
         <segue reference="Ee8-hb-OBe"/>
         <segue reference="I4q-8V-koV"/>

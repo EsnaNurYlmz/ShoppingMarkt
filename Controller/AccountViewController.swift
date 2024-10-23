@@ -6,20 +6,40 @@
 //
 
 import UIKit
+import CoreData
 
 class AccountViewController: UIViewController {
-    
+    var loggedInUserEmail: String?
+
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var accountTableView: UITableView!
-    let accountCategory = ["GİRİŞ","ÜYELİK","FAVORİLER","SEPET","ÇIKIŞ"]
-    
+    let accountCategory = ["GİRİŞ","ÜYELİK","FAVORİLER","SEPET","ÇIKIŞ","HESABI SİL"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         accountTableView.dataSource = self
         accountTableView.delegate = self
-
+        if let email = UserDefaults.standard.string(forKey: "loggedInUserEmail") {
+                    fetchUserName(email: email)
+                }
     }
+    func fetchUserName(email: String) {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                if let user = results.first as? NSManagedObject, let name = user.value(forKey: "name") as? String {
+                    userName.text = name
+                }
+            } catch {
+                print("Kullanıcı adı çekme hatası: \(error.localizedDescription)")
+            }
+        }
 }
 extension AccountViewController : UITableViewDelegate , UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +72,14 @@ extension AccountViewController : UITableViewDelegate , UITableViewDataSource {
             performSegue(withIdentifier: "toCartVC", sender: self)
             
         case "ÇIKIŞ" :
+            UserDefaults.standard.removeObject(forKey: "loggedInUserEmail")
+                        // Oturum kapatıldı
+                        userName.text = "kullanıcı adı"
+                        performSegue(withIdentifier: "toSignInVC", sender: nil)
             print("ÇIKIŞ yapılıyor...")
+        case "HESABI SİL" :
+            print("Hesap Silindi.")
+            
         default:
             break
         }
