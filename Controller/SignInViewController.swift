@@ -29,7 +29,12 @@ class SignInViewController: UIViewController {
                 if authenticateUser(email: email, password: password) {
                     // UserDefaults ile kullanıcı oturumu açıldı
                     UserDefaults.standard.set(email, forKey: "loggedInUserEmail")
-                    performSegue(withIdentifier: "goToAccountVC", sender: nil)
+                    // TabBarController ile ana sayfaya geçiş
+                               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                               if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarControllerID") as? UITabBarController {
+                                   tabBarVC.modalPresentationStyle = .fullScreen
+                                   self.present(tabBarVC, animated: true, completion: nil)
+                               }
                 } else {
                     showAlert(title: "Hata", message: "Geçersiz kullanıcı adı veya şifre")
                 }
@@ -51,20 +56,16 @@ class SignInViewController: UIViewController {
             }
             return false
         }
-    func showAlert(title: String, message: String) {
+
+   
+  func showAlert(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
             alertController.addAction(okAction)
             present(alertController, animated: true, completion: nil)
         }
     
-    
     @IBAction func SignUpButton(_ sender: Any) {
         performSegue(withIdentifier: "toSignUp" , sender: nil)
     }
-    
-    
-    
-    
 }
-

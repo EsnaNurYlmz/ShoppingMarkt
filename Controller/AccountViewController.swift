@@ -24,6 +24,11 @@ class AccountViewController: UIViewController {
                     fetchUserName(email: email)
                 }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     func fetchUserName(email: String) {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext
@@ -38,6 +43,24 @@ class AccountViewController: UIViewController {
                 }
             } catch {
                 print("Kullanıcı adı çekme hatası: \(error.localizedDescription)")
+            }
+        }
+    func deleteUser(email: String) {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                if let user = results.first as? NSManagedObject {
+                    context.delete(user)
+                    try context.save()
+                    print("Kullanıcı başarıyla silindi.")
+                }
+            } catch {
+                print("Kullanıcı silme hatası: \(error.localizedDescription)")
             }
         }
 }
@@ -78,7 +101,17 @@ extension AccountViewController : UITableViewDelegate , UITableViewDataSource {
                         performSegue(withIdentifier: "toSignInVC", sender: nil)
             print("ÇIKIŞ yapılıyor...")
         case "HESABI SİL" :
-            print("Hesap Silindi.")
+            let alert = UIAlertController(title: "Hesap Sil", message: "Hesabınızı silmek istediğinize emin misiniz?", preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Evet", style: .destructive, handler: { _ in
+                           if let email = UserDefaults.standard.string(forKey: "loggedInUserEmail") {
+                               self.deleteUser(email: email)
+                               UserDefaults.standard.removeObject(forKey: "loggedInUserEmail")
+                               self.userName.text = "kullanıcı adı"
+                               print("Hesap silindi.")
+                           }
+                       }))
+                       alert.addAction(UIAlertAction(title: "Hayır", style: .cancel, handler: nil))
+                       present(alert, animated: true, completion: nil)
             
         default:
             break

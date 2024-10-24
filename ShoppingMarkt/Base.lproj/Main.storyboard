@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X8Z-QG-rAu">
-                                <rect key="frame" x="0.0" y="71" width="393" height="205"/>
+                                <rect key="frame" x="0.0" y="130" width="393" height="122"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TM8-nO-d8f">
                                     <size key="itemSize" width="391" height="141"/>
@@ -57,7 +57,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TcQ-Xm-6qP">
-                                <rect key="frame" x="0.0" y="306" width="393" height="242"/>
+                                <rect key="frame" x="0.0" y="282" width="393" height="242"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mKi-zI-A4D">
                                     <size key="itemSize" width="177" height="240"/>
@@ -102,7 +102,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-GI-toC">
-                                <rect key="frame" x="0.0" y="604" width="393" height="173"/>
+                                <rect key="frame" x="0.0" y="580" width="393" height="173"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vjs-Wo-lyW">
                                     <size key="itemSize" width="184" height="166"/>
@@ -147,13 +147,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRSAT ÜRÜNLER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOQ-rf-FaO">
-                                <rect key="frame" x="0.0" y="565" width="393" height="21"/>
+                                <rect key="frame" x="0.0" y="541" width="393" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0k-Ld-n2A">
-                                <rect key="frame" x="16" y="15" width="229" height="0.0"/>
+                                <rect key="frame" x="16" y="74" width="229" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -700,14 +700,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAVORİLERİM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCL-9v-mbo">
-                                <rect key="frame" x="0.0" y="5" width="393" height="21"/>
+                                <rect key="frame" x="0.0" y="64" width="393" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPM-cj-Ygk">
-                                <rect key="frame" x="0.0" y="26" width="393" height="816"/>
+                                <rect key="frame" x="0.0" y="85" width="393" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZCY-0y-C1r">
                                     <size key="itemSize" width="384" height="215"/>
@@ -809,14 +809,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEPETİM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPx-2N-hBY">
-                                <rect key="frame" x="0.0" y="5" width="393" height="24"/>
+                                <rect key="frame" x="0.0" y="64" width="393" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MAi-8Z-Usg">
-                                <rect key="frame" x="0.0" y="29" width="393" height="813"/>
+                                <rect key="frame" x="0.0" y="88" width="393" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j2a-K9-PA9">
                                     <size key="itemSize" width="373" height="213"/>
@@ -919,25 +919,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXj-wo-5UD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5506" y="-67"/>
+            <point key="canvasLocation" x="5097" y="-50"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="I74-jH-LJ3">
             <objects>
-                <viewController id="Q1r-7t-B4i" customClass="AccountViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1r-7t-B4i" customClass="AccountViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="whc-pV-S5x">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HESABIM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-Nl-bg3">
-                                <rect key="frame" x="0.0" y="5" width="393" height="156"/>
+                                <rect key="frame" x="0.0" y="64" width="393" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9oQ-ha-7ts">
-                                <rect key="frame" x="0.0" y="376" width="393" height="466"/>
+                                <rect key="frame" x="0.0" y="303" width="393" height="466"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -971,13 +971,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kullancı adı" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygZ-Fv-By7">
-                                <rect key="frame" x="0.0" y="179" width="393" height="21"/>
+                                <rect key="frame" x="0.0" y="106" width="393" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShoppingMarktLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HUd-xx-DH4">
-                                <rect key="frame" x="50" y="224" width="293" height="124"/>
+                                <rect key="frame" x="50" y="151" width="293" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="124" id="gjt-Io-hPD"/>
                                 </constraints>
@@ -1023,14 +1023,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAl-uy-jit" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6909" y="-115"/>
+            <point key="canvasLocation" x="5898" y="-50"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="ffS-7U-rmK">
             <objects>
                 <viewController storyboardIdentifier="SignInVC" id="3Km-mV-RGL" customClass="SignInViewController" customModule="ShoppingMarkt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fub-qJ-Dz0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShoppingMarktLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-Cj-ohT">
@@ -1202,7 +1202,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="S6h-28-p7M">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarControllerID" id="8bo-Cn-RKh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8bo-Cn-RKh" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lXx-xs-t74">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1223,10 +1223,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="E6b-sq-qEh"/>
-        <segue reference="deQ-iI-WzU"/>
+        <segue reference="yun-kK-St1"/>
         <segue reference="Cbk-3y-EnF"/>
         <segue reference="Ee8-hb-OBe"/>
-        <segue reference="I4q-8V-koV"/>
+        <segue reference="5UR-Zd-X4r"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ShoppingMarktLogo" width="500" height="500"/>
