@@ -12,7 +12,8 @@ class SignInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    var viewModel = SignInViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,45 +25,28 @@ class SignInViewController: UIViewController {
                     showAlert(title: "Hata", message: "Lütfen tüm alanları doldurun")
                     return
                 }
+                // ViewModel'deki email ve password değerlerini ayarla
+                viewModel.email = email
+                viewModel.password = password
                 
-                // Core Data'dan kullanıcı doğrulaması
-                if authenticateUser(email: email, password: password) {
-                    // UserDefaults ile kullanıcı oturumu açıldı
-                    UserDefaults.standard.set(email, forKey: "loggedInUserEmail")
+                // Kullanıcı doğrulama işlemi
+                if viewModel.authenticateUser() {
                     // TabBarController ile ana sayfaya geçiş
-                               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                               if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarControllerID") as? UITabBarController {
-                                   tabBarVC.modalPresentationStyle = .fullScreen
-                                   self.present(tabBarVC, animated: true, completion: nil)
-                               }
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarControllerID") as? UITabBarController {
+                        tabBarVC.modalPresentationStyle = .fullScreen
+                        self.present(tabBarVC, animated: true, completion: nil)
+                    }
                 } else {
                     showAlert(title: "Hata", message: "Geçersiz kullanıcı adı veya şifre")
                 }
     }
-    func authenticateUser(email: String, password: String) -> Bool {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
-            let context = appDelegate.persistentContainer.viewContext
-            
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-            fetchRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
-            
-            do {
-                let results = try context.fetch(fetchRequest)
-                if results.count > 0 {
-                    return true
-                }
-            } catch {
-                print("Hata: \(error.localizedDescription)")
-            }
-            return false
-        }
-
-   
+    
   func showAlert(title: String, message: String) {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
+      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+              let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+              alertController.addAction(okAction)
+              present(alertController, animated: true, completion: nil)
         }
     
     @IBAction func SignUpButton(_ sender: Any) {

@@ -8,52 +8,42 @@
 import UIKit
 
 class CategoryDetailViewController: UIViewController {
-
-    @IBOutlet weak var CategoryDetailCollectionView: UICollectionView!
-    var categoryDetailList = [CategoryDetail]()
-    var selectedCategoryId : Int?
-    var category : Category?
     
+    @IBOutlet weak var CategoryDetailCollectionView: UICollectionView!
+    var viewModel = CategoryDetailViewModel()
+    var selectedCategoryId: Int?
+    var category: Category?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         CategoryDetailCollectionView.dataSource = self
         CategoryDetailCollectionView.delegate = self
         
+        setupBindings()
+        
         if let category_id = selectedCategoryId {
-            fetchCategoryDetail(categoryId: category_id)
+            viewModel.fetchCategoryDetail(categoryId: category_id)
+        }
+    }
+    func setupBindings() {
+        viewModel.didUpdateCategoryDetails = { [weak self] in
+            DispatchQueue.main.async {
+                self?.CategoryDetailCollectionView.reloadData()
+            }
+        }
+        
+        viewModel.didFailWithError = { error in
+            print("Error: \(error)")
         }
     }
     
-    func fetchCategoryDetail(categoryId:Int){
-        var request = URLRequest(url: URL(string: "")!)
-        request.httpMethod = "POST"
-        let postString = "category_id=\(categoryId)"
-        request.httpBody = postString.data(using: .utf8)
-        
-        URLSession.shared.dataTask(with: request) { data , response , error in
-            if error != nil || data == nil {
-                print("Error")
-                return
-            }
-            do{
-                let ResponseCategoryDetail = try JSONDecoder().decode(CategoryDetailResponse.self, from: data!)
-                if let getCategoryDetailList = ResponseCategoryDetail.categoryDetail {
-                    self.categoryDetailList = getCategoryDetailList
-                }
-                DispatchQueue.main.async {
-                    self.CategoryDetailCollectionView.reloadData()
-                }
-            }catch{
-                print(error.localizedDescription)
-            }
-            }.resume()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indeks = sender as? Int
-        let VC = segue.destination as! ProductsViewController
-        VC.categoryDetail = categoryDetailList[indeks!]
+        if let index = CategoryDetailCollectionView.indexPathsForSelectedItems?.first?.row {
+            let destinationVC = segue.destination as! ProductsViewController
+            destinationVC.categoryDetail = viewModel.categoryDetailList[index]
+        }
+        
     }
 }
 
@@ -64,11 +54,11 @@ extension CategoryDetailViewController : UICollectionViewDelegate , UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryDetailList.count
+        return viewModel.categoryDetailList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let categoryDetail = categoryDetailList[indexPath.row]
+        let categoryDetail = viewModel.categoryDetailList[indexPath.row]
         let cell = CategoryDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "CatDetailCell", for: indexPath) as! CategoryDetailCollectionViewCell
         cell.categoryDetailName.text = categoryDetail.categoryDetailName
         

@@ -14,39 +14,37 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var selectSizeButton: UIButton!
     @IBOutlet weak var productFeaturesLabel: UILabel!
+    var categoryProductDetail: ProductDetail?
     
     var pickerView: UIPickerView!
-    var categoryProductDetail : ProductDetail?
+    var viewModel: ProductViewModel?
     let sizes = ["S", "M", "L", "XL"]
-    var selectedSize: String?
  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hidesBottomBarWhenPushed = false
         configureView()
         setupPickerView()
+        bindViewModel()
     }
     
-    func configureView(){
-        if let product = categoryProductDetail {
-            
-            if let url = URL(string: " /\(product.productDetailImage!)"){
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url)
-                    
-                    DispatchQueue.main.async {
-                        self.productImage.image = UIImage(data: data!)
+    func configureView() {
+            if let product = viewModel?.categoryProductDetail {
+                productNameLabel.text = product.productDetailName
+                productPriceLabel.text = String(format: "%.2f ₺", product.productDetailPrice!)
+                productFeaturesLabel.text = product.productDetailFeatures
+                
+                // Ürün görselini yükle
+                viewModel?.loadProductImage { [weak self] data in
+                    if let imageData = data {
+                        self?.productImage.image = UIImage(data: imageData)
                     }
                 }
             }
-            productNameLabel.text = product.productDetailName
-            productPriceLabel.text =  String(format: "%.2f ₺", product.productDetailPrice!)  
-            productFeaturesLabel.text = product.productDetailFeatures
         }
-    }
     // UIPickerView ayarları
        func setupPickerView() {
-           pickerView = UIPickerView()
+              pickerView = UIPickerView()
               pickerView.delegate = self
               pickerView.dataSource = self
               pickerView.isHidden = true // Başlangıçta gizli olacak
@@ -60,6 +58,15 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
                                         height: 150) // Picker'ın yüksekliğini ayarlayabilirsiniz
               view.addSubview(pickerView)
        }
+    // ViewModel ile ViewController'ı bağlama
+        func bindViewModel() {
+            viewModel?.favoriteUpdated = { [weak self] in
+                self?.performSegue(withIdentifier: "tofavorite", sender: nil)
+            }
+            viewModel?.cartUpdated = { [weak self] in
+                self?.performSegue(withIdentifier: "toCart", sender: nil)
+            }
+        }
    
     @IBAction func selectSizeButtonTapped(_ sender: UIButton) {
         pickerView.isHidden = !pickerView.isHidden
@@ -81,49 +88,16 @@ class ProductViewController: UIViewController ,UIPickerViewDelegate , UIPickerVi
 
         // Kullanıcı bir beden seçtiğinde ne olacak
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            selectedSize = sizes[row]
-            selectSizeButton.setTitle("Size: \(selectedSize!)", for: .normal) // Seçilen bedeni butona yaz
+           let selectedSize = sizes[row]
+            selectSizeButton.setTitle("Size: \(selectedSize)", for: .normal) // Seçilen bedeni butona yaz
             pickerView.isHidden = true // Beden seçimi yapılınca picker'ı gizle
         }
     
     @IBAction func addToFavoritesTapped(_ sender: UIBarButtonItem) {
-        if let productFavorite = categoryProductDetail {
-            var favoriteProducts = getFavoriteProducts()
-            favoriteProducts.append(productFavorite)
-            
-            if let encodedData = try? JSONEncoder().encode(favoriteProducts) {
-                           UserDefaults.standard.set(encodedData, forKey: "favorites")
-                           print("Ürün favorilere eklendi")
-                       }
-        }
-            performSegue(withIdentifier: "tofavorite", sender: nil)
+        viewModel?.addToFavorites()
     }
-    func getFavoriteProducts() -> [ProductDetail] {
-            if let savedData = UserDefaults.standard.data(forKey: "favorites"),
-               let favoriteProducts = try? JSONDecoder().decode([ProductDetail].self, from: savedData) {
-                return favoriteProducts
-            }
-            return []
-        }
     
     @IBAction func addToCartTapped(_ sender: UIBarButtonItem) {
-        if let productCart = categoryProductDetail {
-            var cartProducts = getCartProducts()
-            cartProducts.append(productCart)
-            
-            if let encodedData = try? JSONEncoder().encode(cartProducts){
-                UserDefaults.standard.set(encodedData, forKey: "cart")
-                print("ürün sepete eklendi")
-            }
-        }
-        performSegue(withIdentifier: "toCart", sender: nil) // Sepet sayfasına geçiş
-    }
-            
-    func getCartProducts() -> [ProductDetail] {
-        if let  saveData = UserDefaults.standard.data(forKey: "cart"),
-           let cartProducts = try? JSONDecoder().decode([ProductDetail].self, from: saveData) {
-            return cartProducts
-        }
-        return []
+        viewModel?.addToCart()
     }
 }

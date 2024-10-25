@@ -10,9 +10,9 @@ import UIKit
 class ProductsViewController: UIViewController {
 
     @IBOutlet weak var ProductsCollectionView: UICollectionView!
-    var productsList = [Products]()
-    var categoryDetail : CategoryDetail?
-    var selectedCategoryId : Int?
+    var viewModel = ProductsViewModel()
+    var categoryDetail: CategoryDetail?
+    var selectedCategoryId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,54 +20,35 @@ class ProductsViewController: UIViewController {
         ProductsCollectionView.dataSource = self
         ProductsCollectionView.delegate = self
         
-        if let category_id = selectedCategoryId {
-            fetchProducts(categoryDetailId: category_id)
+        bindViewModel()
+        if let categoryId = selectedCategoryId {
+                   viewModel.fetchProducts(categoryDetailId: categoryId)
+               }
+    }
+    func bindViewModel() {
+            viewModel.productsFetched = { [weak self] in
+                self?.ProductsCollectionView.reloadData()
+            }
         }
-    }
-    func fetchProducts(categoryDetailId:Int){
-        var request = URLRequest(url: URL(string: "")!)
-        request.httpMethod = "POST"
-        let postString = "category_id=\(categoryDetailId)"
-        request.httpBody = postString.data(using: .utf8)
-        
-        URLSession.shared.dataTask(with: request) { data , response , error in
-            if error != nil || data == nil {
-                print("Error")
-                return
-            }
-            do{
-                let ResponseProducts = try JSONDecoder().decode(ProductsResponse.self, from: data!)
-                if let getProductsList = ResponseProducts.products {
-                    self.productsList = getProductsList
-                }
-                
-                DispatchQueue.main.async {
-                    self.ProductsCollectionView.reloadData()
-                }
-            }catch{
-                print(error.localizedDescription)
-            }
-        }.resume()
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indeks = sender as? Int
-        let VC = segue.destination as! ProductDetailViewController
-        VC.categoryProduct = productsList[indeks!]
-    }
+            if let index = sender as? Int {
+                let vc = segue.destination as! ProductDetailViewController
+                vc.categoryProduct = viewModel.productsList[index]
+            }
+        }
 }
-
 extension ProductsViewController : UICollectionViewDataSource , UICollectionViewDelegate {
      
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productsList.count
+        return viewModel.productsList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let product = productsList[indexPath.row]
+        let product = viewModel.productsList[indexPath.row]
         let cell = ProductsCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductsCell", for: indexPath) as! ProductsCollectionViewCell
         cell.productName.text = product.productName
         
@@ -86,5 +67,4 @@ extension ProductsViewController : UICollectionViewDataSource , UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toProductDetail", sender: nil)
     }
-    
 }

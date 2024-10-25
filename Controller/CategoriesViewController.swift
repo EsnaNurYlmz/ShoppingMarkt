@@ -10,7 +10,7 @@ import UIKit
 class CategoriesViewController: UIViewController {
 
     @IBOutlet weak var categoryTableView: UITableView!
-    var categoryList = [Category]()
+    var viewModel = CategoriesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,32 +18,28 @@ class CategoriesViewController: UIViewController {
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
         
-        fetchCategories()
+        setupBindings()
+        viewModel.fetchCategories()
     }
-    
-    func fetchCategories() {
-        let url = URL(string: " ")!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if error != nil || data == nil {
-                print("Error")
-                return
-            }
-            do {
-                let ResponseCategory = try JSONDecoder().decode(CategoryResponse.self, from: data!)
-                if let getCategoryList = ResponseCategory.category {
-                    self.categoryList = getCategoryList
+    func setupBindings() {
+            viewModel.didUpdateCategories = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.categoryTableView.reloadData()
                 }
-            } catch {
-                print("Decoding error: \(error.localizedDescription)")
             }
-        }.resume()
-    }
+            
+            viewModel.didFailWithError = { error in
+                print("Error: \(error)")
+            }
+        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indeks = sender as? Int
-        let VC = segue.destination as! CategoryDetailViewController
-        VC.category = categoryList[indeks!]
-    }
+            if let index = categoryTableView.indexPathForSelectedRow?.row {
+                let destinationVC = segue.destination as! CategoryDetailViewController
+                destinationVC.category = viewModel.categoryList[index]
+            }
+        }
+
 }
 
 extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource {
@@ -51,10 +47,10 @@ extension CategoriesViewController : UITableViewDelegate , UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryList.count
+        return viewModel.categoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let category = categoryList[indexPath.row]
+        let category = viewModel.categoryList[indexPath.row]
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
         cell.categoryName.text = category.categoryName
         

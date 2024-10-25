@@ -4,35 +4,38 @@
 //
 //  Created by Esna nur Yılmaz on 9.10.2024.
 //
-/*
+
 import Foundation
 
 class CategoriesViewModel {
     
-    var categoryList: [Category] = [] {
-        didSet {
-            self.reloadTableViewClosure?()
-        }
-    }
+    var categoryList = [Category]()
     
-    var reloadTableViewClosure: (()->())?
+    var didUpdateCategories: (() -> Void)?
+    var didFailWithError: ((String) -> Void)?
     
     func fetchCategories() {
         let url = URL(string: " ")!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if error != nil || data == nil {
-                print("Kategoriler getirilirken hata oluştu")
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            if let error = error {
+                self.didFailWithError?(error.localizedDescription)
+                return
+            }
+            guard let data = data else {
+                self.didFailWithError?("No data")
                 return
             }
             do {
-                let responseCategory = try JSONDecoder().decode(CategoryResponse.self, from: data!)
-                if let getCategoryList = responseCategory.category {
-                    self.categoryList = getCategoryList
+                let responseCategory = try JSONDecoder().decode(CategoryResponse.self, from: data)
+                if let categories = responseCategory.category {
+                    self.categoryList = categories
+                    self.didUpdateCategories?()
                 }
             } catch {
-                print("Decoding error: \(error.localizedDescription)")
+                self.didFailWithError?("Decoding error: \(error.localizedDescription)")
             }
         }.resume()
     }
+    
 }
-*/

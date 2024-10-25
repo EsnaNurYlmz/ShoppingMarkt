@@ -10,30 +10,12 @@ import UIKit
 class CartViewController: UIViewController {
 
     @IBOutlet weak var cartCollectionView: UICollectionView!
-    var cartProductList = [ProductDetail]()
+    var viewModel = CartViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         cartCollectionView.delegate = self
         cartCollectionView.dataSource = self
-       
-        loadCart()
-    }
-    
-    func saveCart() {
-        if let encodedData = try? JSONEncoder().encode(cartProductList) {
-            UserDefaults.standard.set(encodedData, forKey: "cart")
-            print("Sepete ürün kaydedildi.")
-        }
-    }
-    
-    // Favori ürünleri UserDefaults'tan yüklemek için kullanıyor
-    func loadCart() {
-        if let savedData = UserDefaults.standard.data(forKey: "cart"),
-           let decodedData = try? JSONDecoder().decode([ProductDetail].self, from: savedData) {
-            cartProductList = decodedData
-            print("Sepete ürün yüklendi.")
-        }
     }
     
     
@@ -43,40 +25,40 @@ extension CartViewController : UICollectionViewDelegate , UICollectionViewDataSo
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cartProductList.count
+        return viewModel.getCartCount()
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let CartList = cartProductList[indexPath.row]
-        let cell = cartCollectionView.dequeueReusableCell(withReuseIdentifier: "CartCell", for: indexPath) as! CartCollectionViewCell
-        cell.cartProductName.text = CartList.productDetailName
-        cell.cartProductPrice.text = String(format: "%.2f ₺", CartList.productDetailPrice!)
-        cell.productPrice = CartList.productDetailPrice!
-          cell.quantityStepper.value = 1
-          cell.quantityStepper.minimumValue = 1
-        if let url = URL(string: " /\(CartList.productDetailImage!)"){
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url)
+        let cartProduct = viewModel.getProduct(at: indexPath.row)
+                let cell = cartCollectionView.dequeueReusableCell(withReuseIdentifier: "CartCell", for: indexPath) as! CartCollectionViewCell
                 
-                DispatchQueue.main.async {
-                    cell.cartImage.image = UIImage(data: data!)
+                cell.cartProductName.text = cartProduct.productDetailName
+                cell.cartProductPrice.text = String(format: "%.2f ₺", cartProduct.productDetailPrice!)
+                cell.productPrice = cartProduct.productDetailPrice!
+                cell.quantityStepper.value = 1
+                cell.quantityStepper.minimumValue = 1
+                
+                if let url = URL(string: "/\(cartProduct.productDetailImage!)") {
+                    DispatchQueue.global().async {
+                        if let data = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                cell.cartImage.image = UIImage(data: data)
+                            }
+                        }
+                    }
                 }
-            }
-        }
-        cell.cartImage.image = UIImage(named: CartList.productDetailImage!)
-        return cell
+                cell.cartImage.image = UIImage(named: cartProduct.productDetailImage!)
+                return cell
     }
     // Hücreyi sağa kaydırarak silmek için bu metodu
         func collectionView(_ collectionView: UICollectionView, trailingSwipeActionsConfigurationForItemAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Sil") { [weak self] (action, view, completionHandler) in
-                //Sepet listesinden ürünü kaldır
-                self?.cartProductList.remove(at: indexPath.row)
-                self?.saveCart() // Güncellenen sepet listesini kaydet
-                collectionView.deleteItems(at: [indexPath]) // CollectionView'den hücreyi kaldır
-                completionHandler(true) // İşlem tamamlandı
-            }
-            deleteAction.backgroundColor = .red // Silme butonunun arka plan rengi
-            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-            return configuration
+                        self?.viewModel.removeProduct(at: indexPath.row)
+                        collectionView.deleteItems(at: [indexPath])
+                        completionHandler(true)
+                    }
+                    deleteAction.backgroundColor = .red
+                    let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+                    return configuration
         }
 }
 
